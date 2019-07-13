@@ -3,9 +3,9 @@
 
  A tiny python script I made in behalf of Gurkha Technology Inhouse for minimizing digitizing efforts for questions. It simply scrapes the in the following format:
  
- | Question  |Option A | Option B |Option C |Option D |Correct Option |
-| ------------- | ------------- |------------- |------------- |------------- |------------- |
-| Who is Ram's father?  | Nirajan  | Dasharath | Sita  | Surya  | B |
+ | Question  |Answer | Option A |Option B |Option C |Option D | Option E|
+| ------------- | ------------- |------------- |------------- |------------- |------------- |------------- |
+| Who is Ram's father?  | B |Nirajan  | Dasharath | Sita  | Surya  | Maisasur |
  
  
  Installation of Python
