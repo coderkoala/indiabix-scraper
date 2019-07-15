@@ -33,15 +33,46 @@ def append(tail):
         for td in table:
             #Temp var for just taking in the data
             newcsv = list()
+            
+            '''Append Begins here
+            '''
+            #subject_id, topic_id, question_id
+            newcsv.append("")
+            newcsv.append("")
+            newcsv.append("")
+            #question
             newcsv.append(list_questions[iteration])
-            newcsv.append(list_right_tuple[iteration])
+            #marks, time_to_spend,difficulty_level, hint
+            newcsv.append("")
+            newcsv.append("")
+            newcsv.append("")
+            newcsv.append("")
             #Praise no consistency for regex of input
             d = td.find_all("td", attrs={"class": "bix-td-option", "width":"99%"})
+            answer_count = 0
+            for din in d:
+                answer_count = answer_count + 1
+            #total_answers
+            newcsv.append(answer_count)
+            #correct_answer
+            right_answer = list_right_tuple[iteration]
+            if right_answer=="A":
+                    newcsv.append("1")
+            if right_answer=="B":
+                    newcsv.append("2")
+            if right_answer=="C":
+                    newcsv.append("3")
+            if right_answer=="D":
+                    newcsv.append("4")                
+            if right_answer=="E":
+                    newcsv.append("5")
+            ##append_options
             for din in d:
                 newcsv.append(din.text)
+            ##end append
+            iteration = iteration + 1
             print('[APPEND]: ',newcsv)
             list_scraped.append(newcsv)
-            iteration = iteration + 1  
             """            
             for opt in options:
                 if(count <= 4):
@@ -59,12 +90,14 @@ def append(tail):
                     newcsv = list()
                     continue"""
 
-list_final = [['Question','Answer','Option A', 'Option B', 'Option C', 'Option D', 'Option E']]
+list_final = [['subject_id', 'topic_id', 'question_type', 'question', 'marks',
+'time_to_spend','difficulty_level', 'hint', 'total_answers', 'correct_answer', 
+'answer 1', 'answer 2', 'answer 3', 'answer 4', 'answer 5']]
 #used to collect the objects
 list_scraped = list()
 latter = list()
 input_file_name = input("[NAME] Output to save: ")
-index = input("[PASTE] url to crawl: ")
+index = input("[PASTE, should end with / ] url to crawl: ")
 inquiry = input("[RECURSION]Try automatic child pages? [y/n]: ")
 if inquiry == "y" or inquiry == "Y":
     latter = map(str,input("[001001 001002 001003]Please enter the sub urls to crawl: \n").split())
